@@ -42,6 +42,8 @@ import java.util.Locale
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 // CHANGE: All imports from androidx.compose.material.* are now replaced with androidx.compose.material3.*
 import androidx.compose.material3.*
@@ -366,7 +368,8 @@ fun ReportView(viewModel: ExpenseViewModel) {
     Column(
         modifier = Modifier
             .padding(16.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -423,7 +426,7 @@ fun ExpensePieChart(transactions: List<Transaction>) {
         PieChart(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp),
+                .aspectRatio(1f),
             pieChartData = pieChartData,
             pieChartConfig = pieChartConfig
         )
